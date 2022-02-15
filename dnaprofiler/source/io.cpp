@@ -20,15 +20,37 @@ void IO::WriteHeader() {
        << IO::kBlue << "This program loads a DNA database and an unknown"
        << endl
        << "DNA sequence and tries to find a match between" << endl
-       << "the input DNA sequence an the DNA database." << endl
+       << "the input DNA sequence an the DNA database." << IO::kNoColor << endl
        << endl;
 }
 
 void IO::WriteDatabaseRead(const string &database_filepath) {
-  cout << "[+] Preparing to read the DNA Database file [" << database_filepath
-       << "]" << endl;
+  cout << "[+] Preparing to read the DNA database file [" << IO::kRed
+       << database_filepath << IO::kNoColor << "]" << endl;
+}
+
+void IO::WriteDNASequenceRead(const string &dna_sequence_filepath) {
+  cout << "[+] Preparing to read the DNA sequence file [" << IO::kRed
+       << dna_sequence_filepath << IO::kNoColor << "]" << endl;
+}
+
+void IO::WriteProcessingData() {
+  cout << "[+] Processing data, please wait." << endl << endl;
+}
+
+void IO::WriteFilesRead() {
+  cout << "[+] Input files successfully read." << endl;
+}
+
+void IO::WriteSearching() {
+  cout << "[+] Searching the database for a match... please wait." << endl
+       << endl;
 }
 
 void IO::WriteResult(const string &result) {
-  cout << (result.empty() ? "no match" : result) << endl;
+  if (result.empty()) {
+    cout << ">>> Sorry, no match in our database." << endl << endl;
+  } else {
+    cout << "DNA Profile: " << result << endl << endl;
+  }
 }

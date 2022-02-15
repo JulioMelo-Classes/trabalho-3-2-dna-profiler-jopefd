@@ -33,7 +33,10 @@ void Database::LoadDatabase(const string &database_filepath) {
 }
 
 string Database::Find(const string &profile_code) const {
-  return dnas_profiles_.at(profile_code);
+  const auto result = dnas_profiles_.find(profile_code);
+  
+  if (result == dnas_profiles_.end()) return "";
+  return result->second;
 }
 
 Profile Database::get_profile() const { return profile_; }

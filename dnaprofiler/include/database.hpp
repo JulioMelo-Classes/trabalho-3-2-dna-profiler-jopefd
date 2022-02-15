@@ -15,12 +15,33 @@ class Database {
   std::vector<std::string> profile_;
 
  public:
+  /**
+   * \brief Construct a new Database object
+   *
+   * \param database_filepath
+   */
   Database(const std::string &database_filepath);
 
+  /**
+   * \brief Load database from the given file
+   *
+   * \param database_filepath
+   */
   void LoadDatabase(const std::string &database_filepath);
 
+  /**
+   * \brief Find profile code in database
+   *
+   * \param profile_code
+   * \return std::string
+   */
   std::string Find(const std::string &profile_code) const;
 
+  /**
+   * \brief Get the profile object
+   *
+   * \return Profile
+   */
   Profile get_profile() const;
 };
 
